@@ -16,6 +16,7 @@ public class Semafor {
     ProgramPanelGUI programPanelGUI;
     Color color;
     BufferedImage semaforImage;
+    BufferedImage semafor2Image;
 
     public Semafor(ProgramPanelGUI programPanelGUI) {
         this.programPanelGUI = programPanelGUI;
@@ -24,21 +25,27 @@ public class Semafor {
     }
 
     public void semaforPosition (){
-        x = 500;
-        y = 500;
+        x = 850;
+        y = 600;
     }
-    public void loadsemaforImage (){
+    public void loadsemaforImage () {
         try {
-           semaforImage= ImageIO.read(getClass().getResourceAsStream("Semafor.png"));
-        }
-        catch (IOException i){
+            semaforImage = ImageIO.read(getClass().getResourceAsStream("Semafor.png"));
+        } catch (IOException i) {
             i.printStackTrace();
+        }
+        try {
+            semafor2Image = ImageIO.read(getClass().getResourceAsStream("semafor-clanokW.png"));
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+
 
     }
 
-    }
     public void draw (Graphics g){
         g.drawImage(semaforImage,x,y,width,height, null);
+        g.drawImage(semafor2Image,400,400,70,height,null);
         }
     }
 
