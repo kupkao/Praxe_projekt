@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Intersection { BufferedImage intersectionImage;
+/*public class Intersection { BufferedImage intersectionImage;
     public int width = 1400 ;
     public int height = 1000 ;
     public int x = 0;
@@ -33,4 +33,4 @@ public class Intersection { BufferedImage intersectionImage;
         g.drawImage(intersectionImage,x,y,width,height,null);
     }
 
-}
+}*/

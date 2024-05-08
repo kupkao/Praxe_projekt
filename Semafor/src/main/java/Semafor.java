@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Semafor {
-    public int x = 500;
-    public int y = 500;
     public int width = 50 ;
     public int height = 100 ;
     public JButton jButton;
@@ -21,13 +19,8 @@ public class Semafor {
     public Semafor(ProgramPanelGUI programPanelGUI) {
         this.programPanelGUI = programPanelGUI;
         loadsemaforImage();
-        semaforPosition();
     }
 
-    public void semaforPosition (){
-        x = 850;
-        y = 600;
-    }
     public void loadsemaforImage () {
         try {
             semaforImage = ImageIO.read(getClass().getResourceAsStream("Semafor.png"));
@@ -35,17 +28,18 @@ public class Semafor {
             i.printStackTrace();
         }
         try {
-            semafor2Image = ImageIO.read(getClass().getResourceAsStream("semafor-clanokW.png"));
+            semafor2Image = ImageIO.read(getClass().getResourceAsStream("Semafor90.png"));
         } catch (IOException i) {
             i.printStackTrace();
         }
-
-
     }
 
     public void draw (Graphics g){
-        g.drawImage(semaforImage,x,y,width,height, null);
-        g.drawImage(semafor2Image,400,400,70,height,null);
+        Graphics2D g2d = (Graphics2D) g;
+        g.drawImage(semaforImage,850,650,width,height, null);
+        g.drawImage(semaforImage,500,410,width,-height,null);
+        g.drawImage(semafor2Image,1010,420,-height,width,null);
+        g.drawImage(semafor2Image,400,590,height,width,null);
         }
     }
 
