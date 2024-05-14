@@ -8,9 +8,13 @@ public class ProgramFrameGUI extends JFrame {
         setTitle("Semafor");
         setResizable(false);
         ProgramPanelGUI programPanelGUI = new ProgramPanelGUI();
+        ProgramLogic programLogic = new ProgramLogic();
+        programLogic.startProgramThread();
         add(programPanelGUI);
         pack();
         setLocationRelativeTo(null);
+
     }
+
 
 }

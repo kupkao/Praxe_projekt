@@ -12,12 +12,17 @@ public class ProgramPanelGUI extends JPanel implements MouseListener {
     public int height = 1000;
     Semafor semafor = new Semafor(this);
     Rectangle buttonRect = new Rectangle(1010, 400, 100, 20);
+    ProgramLogic programLogic = new ProgramLogic();
+    Car car = new Car();
 
     public ProgramPanelGUI() {
         setPreferredSize(new Dimension(width, height));
         loadBackgroundImage();
         this.addMouseListener(this);
+        programLogic.startProgramThread();
+
     }
+
 
     public void loadBackgroundImage() {
         try {
@@ -38,6 +43,11 @@ public class ProgramPanelGUI extends JPanel implements MouseListener {
         g.fillRect(buttonRect.x, buttonRect.y, buttonRect.width, buttonRect.height);
         g.setColor(Color.RED);
         g.drawString("Zmačknete", buttonRect.x + 20, buttonRect.y + 15);
+        g.setColor(Color.BLACK);
+        programLogic.draw(g);
+        car.draw(g);
+
+
     }
 
     @Override
