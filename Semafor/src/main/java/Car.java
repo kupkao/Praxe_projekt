@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Car {
     public int x;
     public int y;
-    public int withd;
+    public int width;
     public int height;
     public int speed;
     Rectangle rectangle;
@@ -14,36 +14,35 @@ public class Car {
     public boolean start = true;
 
     public Car() {
-        loadsemaforImage();
+        loadCarImage();
         defaultSize();
-        move();
-
     }
 
-    public void loadsemaforImage () {
+    public void loadCarImage() {
         try {
             car = ImageIO.read(getClass().getResourceAsStream("Bez názvu-2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void defaultSize () {
+
+    public void defaultSize() {
         x = 850;
         y = 900;
-        withd = 60;
+        width = 60;
         height = 80;
-        speed = 10;
+        speed = 1;
+        rectangle = new Rectangle(x, y, width, height);
     }
-    public void move () {
-        if (start == true) {
+
+    public void move() {
+        if (start) {
             y -= speed;
-            rectangle = new Rectangle(x,y,withd,height);
+            rectangle.setLocation(x, y);
         }
-        rectangle = new Rectangle(x,y,withd,height);
-
-    }
-    public void draw (Graphics g){
-        g.drawImage(car,x,y,withd,height,null);
     }
 
+    public void draw(Graphics g) {
+        g.drawImage(car, x, y, width, height, null);
+    }
 }

@@ -10,19 +10,20 @@ public class ProgramPanelGUI extends JPanel implements MouseListener {
     BufferedImage backgroundImage;
     public int width = 1400;
     public int height = 1000;
-    Semafor semafor = new Semafor(this);
+    Semafor semafor;
     Rectangle buttonRect = new Rectangle(1010, 400, 100, 20);
-    ProgramLogic programLogic = new ProgramLogic();
-    Car car = new Car();
+    ProgramLogic programLogic;
+    Car car;
 
     public ProgramPanelGUI() {
         setPreferredSize(new Dimension(width, height));
         loadBackgroundImage();
+        car = new Car();
+        semafor = new Semafor(this);
+        programLogic = new ProgramLogic(car, this);
         this.addMouseListener(this);
         programLogic.startProgramThread();
-
     }
-
 
     public void loadBackgroundImage() {
         try {
@@ -35,19 +36,13 @@ public class ProgramPanelGUI extends JPanel implements MouseListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
         g.drawImage(backgroundImage, 0, 0, width, height, null);
         semafor.draw(g);
-        //intersection.draw(g);
         g.setColor(Color.BLACK);
         g.fillRect(buttonRect.x, buttonRect.y, buttonRect.width, buttonRect.height);
         g.setColor(Color.RED);
         g.drawString("Zmačknete", buttonRect.x + 20, buttonRect.y + 15);
-        g.setColor(Color.BLACK);
-        programLogic.draw(g);
         car.draw(g);
-
-
     }
 
     @Override
