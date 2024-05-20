@@ -31,6 +31,7 @@ public class Semafor {
         g.drawImage(semaforImage, 500, 410, width, -height, null);
         g.drawImage(semafor2Image, 1010, 420, -height, width, null);
         g.drawImage(semafor2Image, 400, 590, height, width, null);
+
     }
 }
 

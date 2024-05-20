@@ -13,7 +13,7 @@ public class Program implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         x = e.getX();
-       y = e.getY();
+        y = e.getY();
 
     }
     @Override
