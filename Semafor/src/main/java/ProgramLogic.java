@@ -1,17 +1,25 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ProgramLogic implements Runnable {
     public int fps = 120;
     Thread programThread;
-    Car car;
+    List<Car> cars;
     ProgramPanelGUI programPanelGUI;
     Walls walls;
     int steps = 10;
+    ScheduledExecutorService scheduler;
 
-    public ProgramLogic(Car car, ProgramPanelGUI programPanelGUI) {
-        this.car = car;
+    public ProgramLogic(ProgramPanelGUI programPanelGUI) {
+        this.cars = new ArrayList<>();
         this.programPanelGUI = programPanelGUI;
         this.walls = new Walls();
+        scheduler = Executors.newScheduledThreadPool(1);
+        //startCarSpawner();
     }
 
     public void startProgramThread() {
@@ -39,26 +47,29 @@ public class ProgramLogic implements Runnable {
     }
 
     public void update() {
-        if (!carCollision(Direction.UP, car, walls, steps)) {
-            car.move();
-        }
+
     }
 
-    public boolean carCollision(Direction direction, Car car, Walls walls, int steps) {
-        Rectangle collisionRectangle;
-        switch (direction) {
-            case RIGHT -> collisionRectangle = new Rectangle(car.getX() + steps, car.getY(), car.getWidth(), car.getHeight());
-            case LEFT -> collisionRectangle = new Rectangle(car.getX() - steps, car.getY(), car.getWidth(), car.getHeight());
-            case UP -> collisionRectangle = new Rectangle(car.getX(), car.getY() - steps, car.getWidth(), car.getHeight());
-            case DOWN -> collisionRectangle = new Rectangle(car.getX(), car.getY() + steps, car.getWidth(), car.getHeight());
-            default -> throw new IllegalStateException("GG" + direction);
-        }
 
-        for (Rectangle rect : walls.getRects()) {
-            if (collisionRectangle.intersects(rect)) {
-                return true;
+    public void spawnCar(int position) {
+        Car newCar = new Car(position);
+        cars.add(newCar);
+        programPanelGUI.addCar(newCar);
+    }
+
+    private void startCarSpawner() {
+        scheduler.scheduleAtFixedRate(() -> {
+            for (int i = 1; i <= 4; i++) {
+                spawnCar(i);
             }
-        }
-        return false;
+        }, 0, 10, TimeUnit.SECONDS);
+    }
+
+    public void deactivateWall(int index) {
+        walls.deactivateWall(index);
+    }
+
+    public void toggleWall(int index) {
+        walls.toggleWall(index);
     }
 }

@@ -27,11 +27,10 @@ public class Semafor {
     }
 
     public void draw(Graphics g) {
-        g.drawImage(semaforImage, 850, 650, width, height, null);
-        g.drawImage(semaforImage, 500, 410, width, -height, null);
-        g.drawImage(semafor2Image, 1010, 420, -height, width, null);
-        g.drawImage(semafor2Image, 400, 590, height, width, null);
-
+        g.drawImage(semaforImage, 700-50, 500+150, width, height, null);
+        g.drawImage(semaforImage, 700-50, 500-198, width, -height, null);
+        g.drawImage(semafor2Image, 700-298, 500-50, height, width, null);
+        g.drawImage(semafor2Image, 700+250, 500-50, -height, width, null);
     }
 }
 

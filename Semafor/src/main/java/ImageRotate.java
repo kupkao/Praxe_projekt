@@ -23,10 +23,5 @@ public class ImageRotate {
         this.image = image;
     }
     public void about90 (){
-
     }
-
-
-
-
 }
