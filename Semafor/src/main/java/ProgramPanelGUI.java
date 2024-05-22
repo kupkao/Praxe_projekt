@@ -13,10 +13,10 @@ public class ProgramPanelGUI extends JPanel implements MouseListener {
     public int width = 1400;
     public int height = 1000;
     Semafor semafor;
-    Rectangle buttonRect = new Rectangle(900, 300, 100, 25);
-    Rectangle buttonRect1 = new Rectangle(400, 700, 100, 25);
-    Rectangle buttonRect2 = new Rectangle(900, 700, 100, 25);
-    Rectangle buttonRect3 = new Rectangle(400, 300, 100, 25);
+    Rectangle buttonRect = new Rectangle(900, 300, 100, 30);
+    Rectangle buttonRect1 = new Rectangle(400, 700, 100, 30);
+    Rectangle buttonRect2 = new Rectangle(900, 700, 100, 30);
+    Rectangle buttonRect3 = new Rectangle(400, 300, 100, 30);
     ProgramLogic programLogic;
     List<Car> cars;
     Walls walls = new Walls();

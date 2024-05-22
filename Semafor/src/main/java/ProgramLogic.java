@@ -52,9 +52,6 @@ public class ProgramLogic implements Runnable {
                 car.move();
             }
         }
-
-        // Check for collisions between cars
-        checkCarCollisions();
     }
 
     public boolean carCollision(Car car) {
@@ -69,23 +66,6 @@ public class ProgramLogic implements Runnable {
         return false;
     }
 
-    private void checkCarCollisions() {
-        for (int i = 0; i < cars.size(); i++) {
-            Car carA = cars.get(i);
-            for (int j = i + 1; j < cars.size(); j++) {
-                Car carB = cars.get(j);
-                if ((carA.getRectangle() != null && carB.getRectangle() != null && carA.getRectangle().intersects(carB.getRectangle())) ||
-                        (carA.getRectangle1() != null && carB.getRectangle1() != null && carA.getRectangle1().intersects(carB.getRectangle1())) ||
-                        (carA.getRectangle2() != null && carB.getRectangle2() != null && carA.getRectangle2().intersects(carB.getRectangle2())) ||
-                        (carA.getRectangle3() != null && carB.getRectangle3() != null && carA.getRectangle3().intersects(carB.getRectangle3()))) {
-                    // Handle car collision
-                    System.out.println("Collision detected between car " + carA.getId() + " and car " + carB.getId());
-                    // Implement additional logic for handling the collision
-                }
-            }
-        }
-    }
-
     public void spawnCar(int position) {
         Car newCar = new Car(position);
         cars.add(newCar);
@@ -97,7 +77,7 @@ public class ProgramLogic implements Runnable {
             for (int i = 1; i <= 4; i++) {
                 spawnCar(i);
             }
-        }, 0, 10, TimeUnit.SECONDS); // Spawns cars every 5 seconds
+        }, 0, 2 , TimeUnit.SECONDS);
     }
 
     public void deactivateWall(int index) {

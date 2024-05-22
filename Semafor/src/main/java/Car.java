@@ -111,17 +111,17 @@ public class Car {
         if (rectangle1 != null) {
             g.drawImage(carImage1, x1, y1, height, width, null);
             g.setColor(Color.RED);
-            g.drawRect(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
+           // g.drawRect(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
         }
         if (rectangle2 != null) {
             g.drawImage(carImage2, x2, y2, width, height, null);
             g.setColor(Color.RED);
-            g.drawRect(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
+            //g.drawRect(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
         }
         if (rectangle3 != null) {
             g.drawImage(carImage3, x3, y3, height, width, null);
             g.setColor(Color.RED);
-            g.drawRect(rectangle3.x, rectangle3.y, rectangle3.width, rectangle3.height);
+           // g.drawRect(rectangle3.x, rectangle3.y, rectangle3.width, rectangle3.height);
         }
     }
 
