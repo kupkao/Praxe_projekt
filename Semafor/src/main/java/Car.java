@@ -18,7 +18,6 @@ public class Car {
     public Car(int position) {
         this.id = carCounter++;
         loadCarImage();
-        initializeRectangles();
         defaultSize(position);
         setDirection(position);
     }
@@ -34,38 +33,39 @@ public class Car {
         }
     }
 
-    private void initializeRectangles() {
-        rectangle = new Rectangle();
-        rectangle1 = new Rectangle();
-        rectangle2 = new Rectangle();
-        rectangle3 = new Rectangle();
-    }
-
     public void defaultSize(int position) {
-        width = 70;
-        height = 95;
-        speed = 1;
-
         switch (position) {
             case 1 -> {
                 x = 700 + 50;
                 y = 500 + 600;
-                rectangle.setBounds(x, y, width, height);
+                width = 70;
+                height = 95;
+                speed = 1;
+                rectangle = new Rectangle(x, y, width, height);
             }
             case 2 -> {
                 x1 = 700 + 800;
                 y1 = 500 - 150;
-                rectangle1.setBounds(x1, y1, height, width);
+                width = 70;
+                height = 95;
+                speed = 1;
+                rectangle1 = new Rectangle(x1, y1, height, width);
             }
             case 3 -> {
                 x2 = 700 - 150;
                 y2 = 500 - 600;
-                rectangle2.setBounds(x2, y2, width, height);
+                width = 70;
+                height = 95;
+                speed = 1;
+                rectangle2 = new Rectangle(x2, y2, width, height);
             }
             case 4 -> {
                 x3 = 700 - 800;
                 y3 = 500 + 50;
-                rectangle3.setBounds(x3, y3, height, width);
+                width = 70;
+                height = 95;
+                speed = 1;
+                rectangle3 = new Rectangle(x3, y3, height, width);
             }
         }
     }
@@ -103,15 +103,26 @@ public class Car {
     }
 
     public void draw(Graphics g) {
-        g.drawImage(carImage, x, y, width, height, null);
-        g.drawImage(carImage1, x1, y1, height, width, null);
-        g.drawImage(carImage2, x2, y2, width, height, null);
-        g.drawImage(carImage3, x3, y3, height, width, null);
-        g.setColor(Color.RED);
-        g.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-        g.drawRect(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
-        g.drawRect(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
-        g.drawRect(rectangle3.x, rectangle3.y, rectangle3.width, rectangle3.height);
+        if (rectangle != null) {
+            g.drawImage(carImage, x, y, width, height, null);
+            g.setColor(Color.RED);
+            g.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+        }
+        if (rectangle1 != null) {
+            g.drawImage(carImage1, x1, y1, height, width, null);
+            g.setColor(Color.RED);
+            g.drawRect(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
+        }
+        if (rectangle2 != null) {
+            g.drawImage(carImage2, x2, y2, width, height, null);
+            g.setColor(Color.RED);
+            g.drawRect(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
+        }
+        if (rectangle3 != null) {
+            g.drawImage(carImage3, x3, y3, height, width, null);
+            g.setColor(Color.RED);
+            g.drawRect(rectangle3.x, rectangle3.y, rectangle3.width, rectangle3.height);
+        }
     }
 
     public int getId() {

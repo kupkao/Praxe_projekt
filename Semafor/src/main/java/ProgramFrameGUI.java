@@ -5,7 +5,7 @@ public class ProgramFrameGUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1400, 1000);
         setTitle("Semafor");
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
         ProgramPanelGUI programPanelGUI = new ProgramPanelGUI();
         add(programPanelGUI);
